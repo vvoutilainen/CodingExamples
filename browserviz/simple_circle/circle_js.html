@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<!-- Load d3 as external script -->
+		<script src="https://d3js.org/d3.v5.js" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<!-- Write Javascript here -->
+		<script>
+
+			// Append svg
+			const svg = d3.select("body")
+							.append("svg")
+							.attr("id","mysvg")
+							.attr("width",300)
+							.attr("height",300)
+
+			// Append circle to svg
+			let circle = d3.select("#mysvg")
+								.append("circle")
+								.attr("class","circle")
+								.attr("r",20)
+								.attr("cx",50)
+								.attr("cy",50)
+								.style("fill","red")
+								.style("stroke","black")
+								.style("stroke-width",2)
+
+			// Add event lister: move circle when clicked!
+			circle.on('click', () => {
+				d3.select(".circle")
+						.transition()
+						.duration(2000)
+						.attr("transform",`translate(${200},${200})`)
+						.ease(d3.easeBounce)					
+			})
+
+		</script> 
+		
+	</body>
+</html>
